@@ -1,0 +1,2 @@
+# SimpleCoin
+SimpleCoin (XSC)
