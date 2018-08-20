@@ -133,8 +133,11 @@ XSC.exe 4543533220000000D225B2E78BEAAFC93673E480102B42F3B2A4D6A62D40C95A42A0C3E7
   <data name="DbInfo" xml:space="preserve">
     <value>DB Info: Address: {0}, Balance: {1}, Height: {2} </value>
   </data>
+  <data name="DbLoading" xml:space="preserve">
+    <value>DB Loading, using: {0}</value>
+  </data>
   <data name="DbOpened" xml:space="preserve">
-    <value>DB Opened, using: {0}</value>
+    <value>DB Loaded successfully</value>
   </data>
   <data name="Exception" xml:space="preserve">
     <value>Exception ({0}): {1}</value>

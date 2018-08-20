@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XSC.Common
+namespace XSC
 {
     public class ServiceException : Exception
     {

@@ -95,7 +95,16 @@ namespace XSC.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DB Opened, using: {0}.
+        ///   Looks up a localized string similar to DB Loading, using: {0}.
+        /// </summary>
+        public static string DbLoading {
+            get {
+                return ResourceManager.GetString("DbLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DB Loaded successfully.
         /// </summary>
         public static string DbOpened {
             get {

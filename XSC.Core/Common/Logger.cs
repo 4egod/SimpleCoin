@@ -15,23 +15,23 @@ namespace XSC
 
         public static void Start(string address)
         {
-            Debug.Listeners.Add(new ConsoleTraceListener(true));
+            Trace.Listeners.Add(new ConsoleTraceListener(true));
 
             Path = Config.LogsDirectory + address + Extension;
-            Debug.Listeners.Add(new TextWriterTraceListener(Path));
-            Debug.AutoFlush = true;
+            Trace.Listeners.Add(new TextWriterTraceListener(Path));
+            Trace.AutoFlush = true;
 
             IsStarted = true;
         }
 
         public static void WriteLine(object message)
         {
-            Debug.WriteLine($"{DateTime.Now.ToString("MM.dd-HH:mm:ss")} {message}");
+            Trace.WriteLine($"{DateTime.Now.ToString("MM.dd-HH:mm:ss")} {message}");
         }
 
         public static void WriteLine(string format, params object[] args)
         {
-            Debug.WriteLine($"{DateTime.Now.ToString("MM.dd-HH:mm:ss")} {string.Format(format, args)}");
+            Trace.WriteLine($"{DateTime.Now.ToString("MM.dd-HH:mm:ss")} {string.Format(format, args)}");
         }
     }
 }

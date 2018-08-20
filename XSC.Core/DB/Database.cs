@@ -203,8 +203,10 @@ namespace XSC.DB
                 LastBlock = blocks.FindOne(x => x.Height == Height);
             }
 
-            Logger.WriteLine(Resources.DbOpened, Path);
-            Logger.WriteLine(Resources.DbInfo, address, GetBalance().ToString(Config.BalanceFormatWithTicker), Height);
+            Logger.WriteLine(Resources.DbLoading, Path);
+            string balance = GetBalance().ToString(Config.BalanceFormatWithTicker);
+            Logger.WriteLine(Resources.DbOpened);
+            Logger.WriteLine(Resources.DbInfo, address, balance, Height);
         }
 
         private void CreateIndexes()
