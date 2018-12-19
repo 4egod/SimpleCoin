@@ -121,7 +121,7 @@ namespace XSC.DB
             using (var db = new LiteDatabase(Path))
             {
                 var blocks = db.GetCollection<Block>(BlocksCollectionName);
-                return blocks.FindOne(x => x.Height == height);
+                return blocks.Include(x => x.Transactions).FindOne(x => x.Height == height);
             }
         }
 
@@ -130,7 +130,7 @@ namespace XSC.DB
             using (var db = new LiteDatabase(Path))
             {
                 var blocks = db.GetCollection<Block>(BlocksCollectionName);
-                return blocks.FindOne(x => x.Hash == hash);
+                return blocks.Include(x => x.Transactions).FindOne(x => x.Hash == hash);
             }
         }
 
@@ -198,6 +198,9 @@ namespace XSC.DB
             using (var db = new LiteDatabase(Path))
             {
                 var blocks = db.GetCollection<Block>(BlocksCollectionName);
+
+                //Query query = Query.Where("Hash", x=> true, -1); 
+                //var lastBlocks = blocks.Find(Query.All(Query.Descending), 0, 10);
 
                 Height = (ulong)blocks.Max().AsInt64;
                 LastBlock = blocks.FindOne(x => x.Height == Height);

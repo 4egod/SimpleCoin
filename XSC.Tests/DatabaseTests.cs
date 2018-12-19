@@ -18,6 +18,7 @@ namespace XSC.Tests
         public void Initialize()
         {
             db = Database.Create("PL1xVuL6jWLsqhnZde6mBq");
+            //db = Database.Open("KphYX5KsXKYLXGt6LYvX6Z");
         }
 
         [TestMethod]

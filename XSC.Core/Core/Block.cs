@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 
 namespace XSC.Core
 {
+    using DB;
     using LiteDB;
     using Newtonsoft.Json;
 
@@ -67,6 +68,7 @@ namespace XSC.Core
 
         [DataMember]
         [JsonProperty(Required = Required.Always)]
+        [BsonRef(Database.TransactionsCollectionName)]
         public List<Transaction> Transactions { get; private set; } = new List<Transaction>();
 
         [DataMember]

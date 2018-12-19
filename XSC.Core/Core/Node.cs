@@ -69,6 +69,8 @@ namespace XSC.Core
             StartSynchronizing();
 
             StartMining();
+
+            //Emulate();
         }
 
         public void StartMining()
@@ -77,6 +79,7 @@ namespace XSC.Core
             {
                 while (true)
                 {
+                    Thread.Sleep(10);
                     try
                     {
                         Block b = GetBlockTemplate(Wallet.Address);
@@ -361,6 +364,7 @@ namespace XSC.Core
                 ulong from = GetHeight() + 1;
                 for (ulong i = from; i <= selectedHeight; i++)
                 {
+                    //if (i >= 100) break;
                     Block block = service.GetBlock(i);
                     Process(block);
                 }
@@ -418,6 +422,30 @@ namespace XSC.Core
             var factory = new ChannelFactory<IPeerService>(binding);
             IPeerService peerService = factory.CreateChannel(ep);
             return peerService;
+        }
+
+        private void Emulate()
+        {
+            Thread th = new Thread(() =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        var tx = Transfer(Wallet.Address, 10);
+                        Logger.WriteLine($"TX -{10.ToString(Config.BalanceFormatWithTicker)} ({tx.Hash})");
+                        Thread.Sleep(100);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.WriteLine(Resources.Exception, ex.GetType(), ex.Message);
+                    }
+                }
+            });
+
+            th.Start();
+
+            Logger.WriteLine("Emualting");
         }
     }
 }

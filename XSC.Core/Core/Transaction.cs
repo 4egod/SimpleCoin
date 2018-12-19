@@ -3,8 +3,9 @@ using System.Runtime.Serialization;
 
 namespace XSC.Core
 {
+    using DB;
     using LiteDB;
-    using Newtonsoft.Json;   
+    using Newtonsoft.Json;
 
     internal class TransactionData
     {
@@ -55,18 +56,22 @@ namespace XSC.Core
         public string Recipient { get; private set; }
 
         [JsonProperty(Required = Required.AllowNull)]
+        [BsonRef(Database.InputsCollectionName)]
         [DataMember]
         public Quantum Reward { get; private set; }
 
         [JsonProperty(Required = Required.AllowNull)]
+        [BsonRef(Database.InputsCollectionName)]
         [DataMember]
         public List<Quantum> Inputs { get; private set; }
 
         [JsonProperty(Required = Required.AllowNull)]
+        [BsonRef(Database.OutputsCollectionName)]
         [DataMember]
         public Quantum Output { get; private set; }
 
         [JsonProperty(Required = Required.AllowNull)]
+        [BsonRef(Database.InputsCollectionName)]
         [DataMember]
         public Quantum Change { get; private set; }
 
